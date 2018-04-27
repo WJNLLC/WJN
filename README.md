@@ -11,7 +11,6 @@ Windows Wallet | Linux Wallet | Linux Daemon | Sourcode
 <center>
 
 
-                <a href="//wjn.sa/src/wjn-source.tar.gz" target="_blank" >Sourcode</a>
 
 
 
