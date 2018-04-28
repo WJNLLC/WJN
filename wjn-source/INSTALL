@@ -7,3 +7,58 @@ implementation of WJN.
 See doc/build-*.md for instructions on building wjnd,
 the intended-for-services, no-graphical-interface, reference
 implementation of WJN.
+
+
+
+CentOS
+Dependency Build Instructions
+
+Build requirements:
+
+sudo yum install gcc-c++ libtool make autoconf automake openssl-devel libevent-devel boost-devel libdb4-devel libdb4-cxx-devel python3
+
+Optional:
+
+sudo yum install miniupnpc-devel
+
+To build with Qt 4 (recommended) you need the following:
+
+sudo yum install qt4-qttools-devel qt4-qtbase-devel protobuf-devel
+
+libqrencode (optional) can be installed with:
+
+sudo yum install qrencode-devel
+
+Notes
+
+The release is built with GCC and then "strip bitcoind" to strip the debug symbols, which reduces the executable size by about 90%.
+miniupnpc
+
+miniupnpc may be used for UPnP port mapping. It can be downloaded from here. UPnP support is compiled in and turned off by default. See the configure options for upnp behavior desired:
+
+--without-miniupnpc      No UPnP support miniupnp not required
+--disable-upnp-default   (the default) UPnP support turned off by default at runtime
+--enable-upnp-default    UPnP support turned on by default at runtime
+
+Berkeley DB
+
+It is recommended to use Berkeley DB 4.8. If you have to build it yourself, you can use the installation script included in contrib/ like so
+
+./contrib/install_db4.sh `pwd`
+
+from the root of the repository.
+
+Note: You only need Berkeley DB if the wallet is enabled (see the section Disable-Wallet mode below).
+
+
+
+#################################################################################################################################
+yum install gcc-c++ libtool make autoconf automake openssl-devel libevent-devel boost-devel libdb4-devel libdb4-cxx-devel python3 miniupnpc-devel qt4-qttools-devel qt4-qtbase-devel protobuf-devel qrencode-devel -y
+./contrib/install_db4.sh `pwd`
+#  export BDB_PREFIX='/usr/local/src/WJN/db4'
+qmake-qt4 "USE_QRCODE=1" USE_UPNP=- "USE_DBUS=1" BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include" -o Makefile WJN-qt.pro
+make -f Makefile "USE_QRCODE=1"  "USE_IPV6=1" USE_UPNP=- "USE_DBUS=1" BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include" && make install
+cd src
+make -f makefile.unix "USE_QRCODE=1"  "USE_IPV6=1" USE_UPNP=- "USE_DBUS=1" BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include"
+#################################################################################################################################
+
