@@ -71,7 +71,7 @@ Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
 Every pull request is built for both Windows and Linux on a dedicated server,
 and unit and sanity tests are automatically run. The binaries produced may be
 used for manual QA testing — a link to them will appear in a comment on the
-pull request posted by [WJNLLC](https://github.com/WJNLLC/WJN). See https://github.com/TheBlueMatt/test-scripts
+pull request posted by [WganMe](https://github.com/WganMe). See https://github.com/TheBlueMatt/test-scripts
 for the build/test scripts.
 
 ### Manual Quality Assurance (QA) Testing
