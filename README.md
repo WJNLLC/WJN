@@ -14,8 +14,6 @@ Windows Wallet | Linux Wallet | Linux Daemon | Sourcode
 
 
 
-<a href="https://sourceforge.net/p/wjn/"><img alt="Download WJN" src="https://sourceforge.net/sflogo.php?type=17&group_id=2948317" width=200></a> <br />
-
-
+<a href="https://sourceforge.net/projects/wjn/files/latest/download"><img alt="Download WJN" src="https://img.shields.io/sourceforge/dt/wjn.svg" ></a>
 
 </center>
